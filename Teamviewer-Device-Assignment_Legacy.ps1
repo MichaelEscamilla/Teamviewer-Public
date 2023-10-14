@@ -15,7 +15,7 @@
 		The default Group ID to assign the device if no other groups are found. eg:'g123456789'
 	
 	.EXAMPLE
-		PS C:\> .\Teamviewer-Device-Assignment_Legacy.ps1 -APIScriptToken 'Value1' -AssignmentToken 'Value2'
+		PS C:\> .\Teamviewer-Device-Assignment_Legacy.ps1 -APIScriptToken 'Value1' -AssignmentToken 'Value2' -DefaultGroupID 'g123456789'
 	
 	.NOTES
 		Additional information about the file.
