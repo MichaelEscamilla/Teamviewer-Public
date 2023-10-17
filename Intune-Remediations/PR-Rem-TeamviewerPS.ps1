@@ -26,12 +26,12 @@ try {
         $LatestModuleVersion = Find-Module -Name $ModuleName -ErrorAction Stop -Verbose:$false
         # Check if Installed Module is the current version
         if ($InstalledModule.Version -ge $LatestModuleVersion.Version) {
-            Write-Output "[$($ModuleName)] Module is already Installed"
+            Write-Output "[$($ModuleName)] [$($InstalledModule.Version)] Module is Installed"
             Exit 0
         }
         else {
             Update-Module -Name "$($ModuleName)" -Scope AllUsers -Force -Verbose:$false
-            Write-Output "[$($ModuleName)] Module has been Updated"
+            Write-Output "[$($ModuleName)] [$($InstalledModule.Version)] Module has been Updated"
             Exit 0
         }
     }
@@ -39,11 +39,11 @@ try {
         # Install Module
         try {
             Install-Module -Name "$($ModuleName)" -Scope AllUsers -Force -Verbose:$false
-            Write-Output "[$($ModuleName)] Module has been Installed"
+            Write-Output "[$($ModuleName)] [$($InstalledModule.Version)] Module has been Installed"
             Exit 0
         }
         catch {
-            Write-output "Unable to install [$($ModuleName)] Module. Error message: $($_.Exception.Message)"
+            Write-output "Unable to Install [$($ModuleName)] Module. Error message: $($_.Exception.Message)"
             Exit 1
         }
     }

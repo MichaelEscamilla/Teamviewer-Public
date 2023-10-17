@@ -13,13 +13,13 @@ if (($InstalledModule)) {
     $LatestModuleVersion = Find-Module -Name $ModuleName -ErrorAction Stop -Verbose:$false
     # Check if Installed Module is the current version
     if ($InstalledModule.Version -ge $LatestModuleVersion.Version) {
-        Write-Output "[$($ModuleName)] Module is already Installed"
+        Write-Output "[$($ModuleName)] [$($InstalledModule.Version)] Module is Installed"
         Exit 0
     }else {
-        Write-Warning "[$($ModuleName)] Module needs to be updated."
+        Write-Warning "[$($ModuleName)] [$($InstalledModule.Version)] Module needs to be updated."
         Exit 1
     }
 }else {
-    Write-Warning "[$($ModuleName)] Module Not Installed"
+    Write-Warning "[$($ModuleName)] Module not Installed"
     Exit 1
 }
