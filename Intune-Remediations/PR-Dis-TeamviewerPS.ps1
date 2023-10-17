@@ -4,8 +4,6 @@
 # Set Module Name
 $ModuleName = "TeamviewerPS"
 
-Start-SetExecutionPolicy
-
 # Get Installed Module
 $InstalledModule = Get-InstalledModule -Name "$($ModuleName)" -ErrorAction SilentlyContinue -Verbose:$false
 
