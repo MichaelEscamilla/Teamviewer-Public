@@ -6,9 +6,8 @@
 Function Start-SetExecutionPolicy {
     [CmdletBinding()]
     param ()
-    if ((Get-ExecutionPolicy -Scope CurrentUser) -ne 'RemoteSigned') {
-        #Write-Host -ForegroundColor DarkGray 'Set-ExecutionPolicy RemoteSigned [CurrentUser]'
-        Set-ExecutionPolicy RemoteSigned -Force -Scope CurrentUser
+    if ((Get-ExecutionPolicy) -ne 'RemoteSigned') {
+        Set-ExecutionPolicy RemoteSigned -Force
     }
 }
 

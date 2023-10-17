@@ -6,9 +6,8 @@
 Function Start-SetExecutionPolicy {
     [CmdletBinding()]
     param ()
-    if ((Get-ExecutionPolicy -Scope CurrentUser) -ne 'RemoteSigned') {
-        #Write-Host -ForegroundColor DarkGray 'Set-ExecutionPolicy RemoteSigned [CurrentUser]'
-        Set-ExecutionPolicy RemoteSigned -Force -Scope CurrentUser
+    if ((Get-ExecutionPolicy) -ne 'RemoteSigned') {
+        Set-ExecutionPolicy RemoteSigned -Force
     }
 }
 
@@ -18,7 +17,6 @@ Function Start-TrustPSGallery {
     $PSRepository = Get-PSRepository -Name PSGallery
     if ($PSRepository) {
         if ($PSRepository.InstallationPolicy -ne 'Trusted') {
-            #Write-Host -ForegroundColor DarkGray 'Set-PSRepository PSGallery Trusted [CurrentUser]'
             Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
         }
     }
