@@ -1,33 +1,8 @@
 # Enable TLS 1.2 support for downloading modules from PSGallery (Required)
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-#region Functions
-
-Function Start-SetExecutionPolicy {
-    [CmdletBinding()]
-    param ()
-    if ((Get-ExecutionPolicy) -ne 'RemoteSigned') {
-        Set-ExecutionPolicy RemoteSigned -Force
-    }
-}
-
-Function Start-TrustPSGallery {
-    [CmdletBinding()]
-    param ()
-    $PSRepository = Get-PSRepository -Name PSGallery
-    if ($PSRepository) {
-        if ($PSRepository.InstallationPolicy -ne 'Trusted') {
-            Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-        }
-    }
-}
-
-#endregion
-
 # Set Module Name
 $ModuleName = "TeamviewerPS"
-
-Start-SetExecutionPolicy
 
 # Install the Latest PowershellGet Module
 try {
