@@ -1,5 +1,3 @@
-#Requires -Modules TeamviewerPS
-
 # Enable TLS 1.2 support for downloading modules from PSGallery (Required)
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
