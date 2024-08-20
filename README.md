@@ -10,4 +10,4 @@ This is the newer way and can be reffered to as 'Device Management', 'Device Gro
 
 ## Teamviewer (Classic)
 This is the older way and can be reffered to as 'Computers & Contancts'
-![Teamviewer (Classic)](TeamViewer-(Classic).png)
+![Teamviewer (Classic)](/Assets/TeamViewer-(Classic).png)
