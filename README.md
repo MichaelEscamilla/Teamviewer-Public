@@ -6,8 +6,8 @@ There are now 2 ways to manage devices within Teamviewer, and there are differen
 
 ## Teamviewer Remote
 This is the newer way and can be reffered to as 'Device Management', 'Device Groups'
-![Teamviewer Remote][TeamViewer-Remote.png]
+![Teamviewer Remote][TeamViewer-Remote]
 
 ## Teamviewer (Classic)
 This is the older way and can be reffered to as 'Computers & Contancts'
-![Teamviewer (Classic)][TeamViewer-(Classic).png]
+![Teamviewer (Classic)][TeamViewer-(Classic)]
