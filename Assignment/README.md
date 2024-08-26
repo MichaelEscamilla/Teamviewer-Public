@@ -12,4 +12,5 @@ This script Assigns the device to your TeamViewers "Computers & Contacts" list.
 This script Assigns the device to your TeamViewer Account. Utilizes the [TeamViewerPS](https://github.com/teamviewer/TeamViewerPS/tree/main) module.
 
 [More Info on Assignment Options](https://www.teamviewer.com/en-us/global/support/knowledge-base/teamviewer-remote/deployment/mass-deployment-user-guide/assign-a-device-via-command-line-8-10/)  
-[More Info on the Add-TeamViewerAssignment function](https://github.com/teamviewer/TeamViewerPS/blob/main/Docs/Help/Add-TeamViewerAssignment.md){:target="_blank"}
+[More Info on the Add-TeamViewerAssignment function](https://github.com/teamviewer/TeamViewerPS/blob/main/Docs/Help/Add-TeamViewerAssignment.md)
+<a href="https://github.com/teamviewer/TeamViewerPS/blob/main/Docs/Help/Add-TeamViewerAssignment.md" target="_blank">More Info on the Add-TeamViewerAssignment function</a>
