@@ -8,7 +8,7 @@ This script Assigns the device to your TeamViewers "Computers & Contacts" list.
 
 [More Info on Assignment Options](https://www.teamviewer.com/en-us/global/support/knowledge-base/teamviewer-classic/deployment/mass-deployment-on-windows-user-guide-legacy/assignment-options-5-6-legacy/)
 
-## Teamviewer-Device-Assignment_MDv2.ps1
+# Teamviewer-Device-Assignment_MDv2.ps1
 This script Assigns the device to your TeamViewer Account. Utilizes the [TeamViewerPS](https://github.com/teamviewer/TeamViewerPS/tree/main) module.
 
 [More Info on Assignment Options](https://www.teamviewer.com/en-us/global/support/knowledge-base/teamviewer-remote/deployment/mass-deployment-user-guide/assign-a-device-via-command-line-8-10/)  
@@ -18,4 +18,22 @@ This script Assigns the device to your TeamViewer Account. Utilizes the [TeamVie
 
 ```powershell
 PS /> .\Teamviewer-Device-Assignment_MDv2.ps1 -AssignmentID '0001CoABChCiJnyAKf0R7r6'
+```
+
+## PARAMETERS
+
+### -AssignmentID
+
+Object that is required to assign the device to a Company.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: None
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
