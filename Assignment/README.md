@@ -3,11 +3,6 @@ These scripts can be used to for assignment to your Teamviewer account.
 
 I primarily used these as Post-Scripts for Applications created via PatchMyPC
 
-## Teamviewer-Device-Assignment_Legacy.ps1
-This script Assigns the device to your TeamViewers "Computers & Contacts" list.
-
-[More Info on Assignment Options](https://www.teamviewer.com/en-us/global/support/knowledge-base/teamviewer-classic/deployment/mass-deployment-on-windows-user-guide-legacy/assignment-options-5-6-legacy/)
-
 # Teamviewer-Device-Assignment_MDv2.ps1
 This script Assigns the device to your TeamViewer Account. Utilizes the [TeamViewerPS](https://github.com/teamviewer/TeamViewerPS/tree/main) module.
 
@@ -49,3 +44,8 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+# Teamviewer-Device-Assignment_Legacy.ps1
+This script Assigns the device to your TeamViewers "Computers & Contacts" list.
+
+[More Info on Assignment Options](https://www.teamviewer.com/en-us/global/support/knowledge-base/teamviewer-classic/deployment/mass-deployment-on-windows-user-guide-legacy/assignment-options-5-6-legacy/)
