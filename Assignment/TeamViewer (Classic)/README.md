@@ -6,7 +6,7 @@ This script Assigns the device to your TeamViewers "Computers & Contacts" list.
 ## SYNTAX
 
 ```powershell
-Teamviewer-Device-Assignment_Legacy.ps1 [-AssignmentID]
+Teamviewer-Device-Assignment_Legacy.ps1 [-APIScriptToken] [-AssignmentToken] [-DefaultGroupID]
 ```
 
 ## DESCRIPTION
