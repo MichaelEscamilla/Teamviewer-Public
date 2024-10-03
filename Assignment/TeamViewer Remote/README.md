@@ -19,7 +19,7 @@ Will assign a Windows Teamviewer device to your account using the MDv2 method of
 ### Example 1
 
 ```powershell
-PS /> .\Teamviewer-Device-Assignment_MDv2.ps1 -AssignmentID '0001CoABChCiJnyAKf0R7r6'
+PS /> .\Teamviewer-Device-Assignment_MDv2.ps1 -AssignmentID "0001CoABChCiJnyAKf0R7r6"
 ```
 
 ## PARAMETERS
