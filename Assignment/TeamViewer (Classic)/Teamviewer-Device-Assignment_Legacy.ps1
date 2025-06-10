@@ -259,6 +259,9 @@ try
 	try
 	{
 		Start-Process -FilePath "$InstallDirectory\Teamviewer.exe" -ArgumentList "assign --api-token `"$($TVAssignmentToken)`" --reassign --grant-easy-access --alias `"$($DeviceAlias)`" --group-id $($DeviceGroup)"
+
+  		# Wait for the process (30 seconds seems to work for most. You may not actually need this delay)
+    		Start-Sleep -Seconds 30
 	}
 	catch
 	{
