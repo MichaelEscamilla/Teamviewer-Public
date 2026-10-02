@@ -21,12 +21,10 @@ catch [System.Exception] {
 
 # Install the Latest PowershellGet Module
 try {
-    # Install PackageManagement Module
-    if (-not (Get-Module -Name PackageManagement -ListAvailable | Where-Object { $_.Version -ge '1.4.7' })) {
-        Install-Module -Name "PackageManagement" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
-    }
-    # Install PowerShellGet Module
     if (-not (Get-Module -Name PowerShellGet -ListAvailable | Where-Object { $_.Version -ge '2.2.5' })) {
+        # Install PackageManagement Module
+        Install-Module -Name "PackageManagement" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
+        # Install PowerShellGet Module
         Install-Module -Name "PowerShellGet" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
     }
 }
@@ -77,7 +75,6 @@ catch {
 # Managed Device V2 model
 # Device Groups
 #   Read operations
-#   modifying operations
 
 # API Token
 $scriptToken = ""
