@@ -4,6 +4,9 @@
 # Set Module Name
 $ModuleName = "TeamviewerPS"
 
+# Ensure TLS 1.2 is used for the PowerShell Gallery (required under SYSTEM/5.1)
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+
 # Install latest NuGet package provider
 try {
     if (-not (Get-PackageProvider -Name "NuGet" -ListAvailable -ErrorAction SilentlyContinue | Where-Object { $_.Version -ge '2.8.5' })) {
@@ -72,13 +75,15 @@ catch {
 # Assignment ID
 $AssignmentID = ""
     
+# Device Alias Name
+$DeviceAliasName = $($env:COMPUTERNAME)
+
 # Assign Device
-$DevieAliasName = $($env:COMPUTERNAME)
-$AssignmentStatus = Add-TeamViewerAssignment -AssignmentId "$AssignmentID" -DeviceAlias "$($DevieAliasName)" -Retries 3
+$AssignmentStatus = Add-TeamViewerAssignment -AssignmentId "$AssignmentID" -DeviceAlias "$($DeviceAliasName)" -Retries 3
 
 # Verify AssignmentStatus
 if ($AssignmentStatus -eq 'Operation successful') {
-    Write-Output "[SUCCESS] Device Assignment was Successful [$($DevieAliasName)]"
+    Write-Output "[SUCCESS] Device Assignment was Successful [$($DeviceAliasName)]"
     Exit 0
 }
 else {

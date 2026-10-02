@@ -4,6 +4,9 @@
 # Set Module Name
 $ModuleName = "TeamviewerPS"
 
+# Ensure TLS 1.2 is used for the PowerShell Gallery (required under SYSTEM/5.1)
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+
 # Install latest NuGet package provider
 try {
     if (-not (Get-PackageProvider -Name "NuGet" -ListAvailable -ErrorAction SilentlyContinue | Where-Object { $_.Version -ge '2.8.5' })) {
@@ -18,10 +21,12 @@ catch [System.Exception] {
 
 # Install the Latest PowershellGet Module
 try {
-    if (-not (Get-Module -Name PowerShellGet -ListAvailable | Where-Object { $_.Version -ge '2.2.5' })) {
-        # Install PackageManagement Module
+    # Install PackageManagement Module
+    if (-not (Get-Module -Name PackageManagement -ListAvailable | Where-Object { $_.Version -ge '1.4.7' })) {
         Install-Module -Name "PackageManagement" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
-        # Install PowerShellGet Module
+    }
+    # Install PowerShellGet Module
+    if (-not (Get-Module -Name PowerShellGet -ListAvailable | Where-Object { $_.Version -ge '2.2.5' })) {
         Install-Module -Name "PowerShellGet" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
     }
 }
@@ -77,8 +82,26 @@ catch {
 # API Token
 $scriptToken = ""
 
+# Ensure an API token is configured before attempting to connect
+if (-not $scriptToken) {
+    Write-Warning "No API token configured"
+    Exit 1
+}
+
 # Connect Teamviewer API
-Connect-TeamViewerApi -ApiToken $($scriptToken | ConvertTo-SecureString -AsPlainText -Force)
+try {
+    Connect-TeamViewerApi -ApiToken $($scriptToken | ConvertTo-SecureString -AsPlainText -Force) -ErrorAction Stop
+}
+catch {
+    Write-Warning "Unable to connect to TeamViewer API. Error message: $($_.Exception.Message)"
+    Exit 1
+}
+
+# Verify the connection succeeded (token is stored as a default parameter on success)
+if (-not $global:PSDefaultParameterValues['*-Teamviewer*:APIToken']) {
+    Write-Warning "TeamViewer API token is invalid or the connection failed"
+    Exit 1
+}
 
 # Get Local Device Management ID
 $TVManagementID = Get-TeamViewerManagementId
@@ -87,7 +110,7 @@ if ($TVManagementID) {
     $TVManagedDevice = Get-TeamViewerManagedDevice -Id "$($TVManagementID)"
     if ($TVManagedDevice) {
         # Check device is Online
-        if ($TVManagedDevice.IsOnline -ne $false) {
+        if ($TVManagedDevice.IsOnline) {
             # Device Found and Online
             Write-Output "Success: Device is Managed [$($TVManagedDevice.Name)]"
             Exit 0
