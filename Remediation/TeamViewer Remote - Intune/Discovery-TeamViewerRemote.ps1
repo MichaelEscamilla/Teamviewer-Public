@@ -66,6 +66,20 @@ catch {
     Exit 1
 }
 
+#############################
+# Check Device Management
+#############################
+# Managed Device V2 model
+# Device Groups
+#   Read operations
+#   modifying operations
+
+# API Token
+$scriptToken = ""
+
+# Connect Teamviewer API
+Connect-TeamViewerApi -ApiToken $($scriptToken | ConvertTo-SecureString -AsPlainText -Force)
+
 # Get Local Device Management ID
 $TVManagementID = Get-TeamViewerManagementId
 if ($TVManagementID) {
